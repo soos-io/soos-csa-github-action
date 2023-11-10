@@ -26,6 +26,6 @@ PARAMS=(
     ${SOOS_VERBOSE:+--verbose}
 )
 
-ls -la
+ls
 
-node dist/index.js "${SOOS_TARGET_IMAGE}" "${PARAMS[*]}"
+node /usr/src/app/dist/index.js "${SOOS_TARGET_IMAGE}" "${PARAMS[*]}"
