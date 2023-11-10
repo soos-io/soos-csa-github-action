@@ -1,7 +1,5 @@
 #!/bin/bash -l
 
-python3 /check_version.py
-
 SOOS_APP_VERSION=${GITHUB_ACTION_REF}
 
 SOOS_INTEGRATION_NAME="GitHub"
