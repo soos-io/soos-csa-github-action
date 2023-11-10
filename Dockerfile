@@ -1,6 +1,5 @@
 FROM soosio/csa
 
-USER ROOT
 COPY check_version.py /check_version.py
 COPY entrypoint.sh /entrypoint.sh
 
