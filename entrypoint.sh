@@ -28,4 +28,7 @@ PARAMS=(
     ${SOOS_VERBOSE:+--verbose}
 )
 
+#  echo where dist/index.js
+ls -la dist/index.js
+
 node dist/index.js "${SOOS_TARGET_IMAGE}" "${PARAMS[*]}"
