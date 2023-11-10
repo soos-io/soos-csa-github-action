@@ -15,7 +15,6 @@ PARAMS=(
     ${SOOS_BRANCH_URI:+--branchUri ${SOOS_BRANCH_URI}}
     ${SOOS_BUILD_URI:+--buildUri ${SOOS_BUILD_URI}}
     ${SOOS_BUILD_VERSION:+--buildVersion ${SOOS_BUILD_VERSION}}
-    "--checkoutDir ${GITHUB_WORKSPACE}"
     "--clientId ${SOOS_CLIENT_ID}"
     "--commitHash ${GITHUB_SHA}"
     "--integrationName ${SOOS_INTEGRATION_NAME}"
