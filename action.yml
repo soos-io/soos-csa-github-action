@@ -1,0 +1,76 @@
+name: 'SOOS CSA'
+author: 'SOOS'
+description: 'The SOOS GitHub Action to perform CSA Analysis.'
+branding:
+  icon: "alert-triangle"
+  color: "blue"
+inputs:
+  api_key:
+    description: 'SOOS API Key.'
+    required: true
+  api_url:
+    description: 'SOOS API URL.'
+    required: true
+    default: 'https://api.soos.io/api/'
+  branch_name:
+    description: 'Branch Name to create scan under'
+    required: false
+    default: ''
+  branch_uri:
+    description: 'URI to branch from SCM system.'
+    required: false
+    default: ''
+  build_uri:
+    description: 'URI to CI build info.'
+    required: false
+    default: ''
+  build_version:
+    description: 'Version of application build artifacts.'
+    required: false
+    default: ''
+  client_id:
+    description: 'SOOS Client Id.'
+    required: true
+  log_level:
+    description: 'Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL.'
+    required: false
+    default: 'INFO'
+  on_failure:
+    description: "Action to perform when the scan fails. Values available: fail_the_build, continue_on_failure (Default)"
+    required: false
+    default: 'continue_on_failure'
+  operating_environment:
+    description: 'System info regarding operating system, etc.'
+    required: false
+    default: ${{ runner.os }}
+  other_options:
+    description: 'Other Options to pass to syft.'
+    required: false
+  project_name:
+    description: 'The project name that will be displayed on the dashboard. By Default is owner/repository_name.'
+    required: true
+    default: ${{ github.repository }}
+  target_image:
+    description: "The target to scan. Should be a docker image name or a path to a directory containing a Dockerfile."
+    required: true
+  verbose: 
+    description: 'Enable verbose logging.'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    SOOS_API_KEY: ${{ inputs.api_key }}
+    SOOS_API_URL: ${{ inputs.api_url }}
+    SOOS_BRANCH_NAME: ${{ inputs.branch_name }}
+    SOOS_BRANCH_URI: ${{ inputs.branch_uri }}
+    SOOS_BUILD_URI: ${{ inputs.build_uri }}
+    SOOS_BUILD_VERSION: ${{ inputs.build_version }}
+    SOOS_CLIENT_ID: ${{ inputs.client_id }}
+    SOOS_LOG_LEVEL: ${{ inputs.log_level }}
+    SOOS_ON_FAILURE: ${{ inputs.on_failure }}
+    SOOS_OPERATING_ENVIRONMENT: ${{ inputs.operating_environment }}
+    SOOS_OTHER_OPTIONS: ${{ inputs.other_options }}
+    SOOS_PROJECT_NAME: ${{ inputs.project_name }}
+    SOOS_TARGET_IMAGE: ${{ inputs.target_image }}
+    SOOS_VERBOSE: ${{ inputs.verbose }}
