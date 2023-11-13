@@ -26,8 +26,8 @@ jobs:
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
-          project_name: "CSA-GitHub-Action-Test"
-          target_image: "alpine"
+          project_name: "My Project Name"
+          target_image: "image:tag"
 
 ```
 
