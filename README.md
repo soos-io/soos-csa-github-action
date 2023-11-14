@@ -12,7 +12,7 @@ If you maintain an Open Source project, sign up for the Free as in Beer [SOOS Co
 
 You can use the Action as follows:
 
-- Update the `.github/workflow/main.yml` file to include a step like this
+- Update the `.github/workflows/main.yml` file to include a step like this
 ``` yaml
 on: [push]
 
