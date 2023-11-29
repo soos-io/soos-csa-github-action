@@ -19,7 +19,7 @@ PARAMS=(
     "--commitHash" "${GITHUB_SHA}"
     "--integrationName" "${SOOS_INTEGRATION_NAME}"
     "--integrationType" "${SOOS_INTEGRATION_TYPE}"
-    ${SOOS_OTHER_OPTIONS:+--otherOptions ${SOOS_OTHER_OPTIONS}}
+    ${SOOS_OTHER_OPTIONS:+--otherOptions "${SOOS_OTHER_OPTIONS}"}
     "--onFailure" "${SOOS_ON_FAILURE}"
     "--projectName" "${SOOS_PROJECT_NAME}"
 )
