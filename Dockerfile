@@ -1,4 +1,4 @@
-FROM soosio/csa:alpha
+FROM soosio/csa
 
 COPY entrypoint.sh /entrypoint.sh
 
