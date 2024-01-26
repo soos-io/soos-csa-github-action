@@ -32,7 +32,7 @@ inputs:
     description: "SOOS Client Id."
     required: true
   log_level:
-    description: "Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL."
+    description: "Log level to show: DEBUG, INFO, WARN, FAIL, ERROR."
     required: false
     default: "INFO"
   on_failure:
