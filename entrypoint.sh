@@ -28,4 +28,4 @@ PARAMS=(
 
 [ "$SOOS_VERBOSE" == "true" ] && PARAMS+=("--verbose")
 
-node /usr/src/app/dist/index.js "${SOOS_TARGET_IMAGE}" "${PARAMS[@]}"
+node /usr/src/app/dist/index.js ${SOOS_TARGET_IMAGE} "${PARAMS[@]}"
