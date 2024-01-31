@@ -20,10 +20,12 @@ PARAMS=(
     "--integrationName" "${SOOS_INTEGRATION_NAME}"
     "--integrationType" "${SOOS_INTEGRATION_TYPE}"
     ${SOOS_OTHER_OPTIONS:+--otherOptions "${SOOS_OTHER_OPTIONS}"}
+    ${SOOS_LOG_LEVEL:+--logLevel ${SOOS_LOG_LEVEL}}
+    ${SOOS_OUTPUT_FORMAT:+--outputFormat ${SOOS_OUTPUT_FORMAT}}
     "--onFailure" "${SOOS_ON_FAILURE}"
     "--projectName" "${SOOS_PROJECT_NAME}"
 )
 
 [ "$SOOS_VERBOSE" == "true" ] && PARAMS+=("--verbose")
 
-node /usr/src/app/dist/index.js "${SOOS_TARGET_IMAGE}" "${PARAMS[@]}"
+node /usr/src/app/dist/index.js ${SOOS_TARGET_IMAGE} "${PARAMS[@]}"
