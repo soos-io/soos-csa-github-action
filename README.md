@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS CSA Analysis
-        uses: soos-io/soos-csa-github-action@v1.0.0
+        uses: soos-io/soos-csa-github-action@v1
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
@@ -48,8 +48,6 @@ jobs:
 | other_options          | [none]                       | Other Options to pass to syft.                                                                                               |
 | project_name           | ${{ github.repository }}     | The project name that will be displayed on the dashboard. By Default is owner/repository_name.                               |
 | target_image           | [none]                       | The target to scan. Should be a docker image name or a path to a directory containing a Dockerfile.                          |
-| verbose                | [none]                       | Enable verbose logging.                                                                                                      |
-
 
 ## References
  - [Syft](https://github.com/anchore/syft)
