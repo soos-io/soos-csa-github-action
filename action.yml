@@ -1,6 +1,6 @@
 name: "SOOS CSA"
 author: "SOOS"
-description: "The SOOS GitHub Action to perform CSA Analysis."
+description: "The SOOS GitHub Action to perform Container Analysis."
 branding:
   icon: "alert-triangle"
   color: "blue"
@@ -9,17 +9,17 @@ inputs:
     description: "SOOS API Key."
     required: true
   api_url:
-    description: "SOOS API URL."
+    description: "SOOS API URL - Internal Use Only"
     required: true
     default: "https://api.soos.io/api/"
-  branch_name:
-    description: "Branch Name to create scan under"
-    required: false
-    default: ""
   branch_uri:
-    description: "URI to branch from SCM system."
+    description: 'URI to branch from SCM system.'
     required: false
-    default: ""
+    default: '${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref_name }}'
+  branch_name:
+    description: 'Branch Name to create scan under'
+    required: false
+    default: '${{ github.ref_name }}'
   build_uri:
     description: "URI to CI build info."
     required: false
@@ -29,7 +29,7 @@ inputs:
     required: false
     default: ""
   client_id:
-    description: "SOOS Client Id."
+    description: "SOOS Client ID."
     required: true
   log_level:
     description: "Log level to show: DEBUG, INFO, WARN, FAIL, ERROR."
@@ -44,7 +44,7 @@ inputs:
     required: false
     default: ${{ runner.os }}
   other_options:
-    description: "Other Options to pass to syft."
+    description: "Other Options to pass to Syft."
     required: false
   output_format:
     description: "Output format for vulnerabilities: only the value SARIF is available at the moment"
@@ -115,6 +115,7 @@ runs:
         [ -n "${{ inputs.on_failure }}" ] && args+="--onFailure=${{ inputs.on_failure }} "
         [ -n "${{ inputs.operating_environment }}" ] && args+="--operatingEnvironment=${{ inputs.operating_environment }} "
         [ -n "${{ inputs.other_options }}" ] && args+="--otherOptions=\"${{ inputs.other_options }}\" "
+        [ -n "${{ inputs.output_format }}" ] && args+="--otherOptions=\"${{ inputs.output_format }}\" "
         [ -n "${{ inputs.project_name }}" ] && args+="--projectName=\"${{ inputs.project_name }}\" "
 
         [ -n "${{ inputs.target_image }}" ] && args+="${{ inputs.target_image }}"
