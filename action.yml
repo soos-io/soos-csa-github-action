@@ -31,6 +31,12 @@ inputs:
   client_id:
     description: "SOOS Client ID."
     required: true
+  export_format:
+    description: "Export format."
+    required: false
+  export_file_type:
+    description: "Export file type."
+    required: false
   log_level:
     description: "Log level to show: DEBUG, INFO, WARN, FAIL, ERROR."
     required: false
@@ -47,7 +53,7 @@ inputs:
     description: "Other Options to pass to Syft."
     required: false
   output_format:
-    description: "Output format for vulnerabilities: only the value SARIF is available at the moment"
+    description: "DEPRECATED - parameter has no effect. Use export_format and export_file_type."
     required: false
   project_name:
     description: "The project name that will be displayed on the dashboard. By Default is owner/repository_name."
@@ -110,11 +116,12 @@ runs:
         [ -n "${{ inputs.build_uri }}" ] && args+="--buildURI=${{ inputs.build_uri }} "
         [ -n "${{ inputs.build_version }}" ] && args+="--buildVersion=${{ inputs.build_version }} "
         [ -n "${{ inputs.client_id }}" ] && args+="--clientId=${{ inputs.client_id }} "
+        [ -n "${{ inputs.export_format }}" ] && args+="--exportFormat=\"${{ inputs.export_format }}\" "
+        [ -n "${{ inputs.export_file_type }}" ] && args+="--exportFileType=\"${{ inputs.export_file_type }}\" "
         [ -n "${{ inputs.log_level }}" ] && args+="--logLevel=${{ inputs.log_level }} "
         [ -n "${{ inputs.on_failure }}" ] && args+="--onFailure=${{ inputs.on_failure }} "
         [ -n "${{ inputs.operating_environment }}" ] && args+="--operatingEnvironment=${{ inputs.operating_environment }} "
         [ -n "${{ inputs.other_options }}" ] && args+="--otherOptions=\"${{ inputs.other_options }}\" "
-        [ -n "${{ inputs.output_format }}" ] && args+="--outputFormat=\"${{ inputs.output_format }}\" "
         [ -n "${{ inputs.project_name }}" ] && args+="--projectName=\"${{ inputs.project_name }}\" "
 
         [ -n "${{ inputs.target_image }}" ] && args+="${{ inputs.target_image }}"

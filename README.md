@@ -42,6 +42,8 @@ jobs:
 | build_uri              | [none]                       | URI to CI build info.                                                                                                        |
 | build_version          | [none]                       | Version of application build artifacts.                                                                                      |
 | client_id              | [none]                       | The Client Id provided to you when subscribing to SOOS services.                                                             |
+| export_format          | [none]                       | Write the scan result to this file format. Options: CsafVex, CycloneDx, Sarif, Spdx, SoosIssues, SoosLicenses, SoosPackages, SoosVulnerabilities |
+| export_file_type       | [none]                       | Write the scan result to this file type (when used with exportFormat). Options: Csv, Html, Json, Text, Xml                                       |
 | log_level              | 'INFO'                       | Log level to show: DEBUG, INFO, WARN, FAIL, ERROR.                                                                           |
 | on_failure             | 'continue_on_failure'        | Action to perform when the scan fails. Values available: fail_the_build, continue_on_failure.                                |
 | operating_environment  | ${{ runner.os }}             | System info regarding operating system, etc.                                                                                 |
