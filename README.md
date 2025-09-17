@@ -47,6 +47,7 @@ jobs:
 | log_level              | 'INFO'                       | Log level to show: DEBUG, INFO, WARN, FAIL, ERROR.                                                                           |
 | on_failure             | 'continue_on_failure'        | Action to perform when the scan fails. Values available: fail_the_build, continue_on_failure.                                |
 | operating_environment  | ${{ runner.os }}             | System info regarding operating system, etc.                                                                                 |
+| other_docker_run_options | [none]                       | Other Options to pass to the Docker run command.                                                                           | 
 | other_options          | [none]                       | Other Options to pass to syft.                                                                                               |
 | project_name           | ${{ github.repository }}     | The project name that will be displayed on the dashboard. By Default is owner/repository_name.                               |
 | target_image           | [none]                       | The target to scan. Should be a docker image name or a path to a directory containing a Dockerfile.                          |

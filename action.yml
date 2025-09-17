@@ -49,6 +49,9 @@ inputs:
     description: "System info regarding operating system, etc."
     required: false
     default: ${{ runner.os }}
+  other_docker_run_options:
+    description: "Additional Docker CLI options for the run command, e.g. '-v /var/run/docker.sock:/var/run/docker.sock' to enable access a private registry."
+    required: false
   other_options:
     description: "Other Options to pass to Syft."
     required: false
@@ -133,5 +136,5 @@ runs:
       shell: bash
       run: |
         docker pull soosio/csa:${{ inputs.image_tag }}
-        eval "docker run -v ${{ github.workspace }}:/usr/src/app/:rw --rm soosio/csa:${{ inputs.image_tag }} $args"
+        eval "docker run${{ inputs.other_docker_run_options && format(' {0}', inputs.other_docker_run_options) }} -v ${{ github.workspace }}:/usr/src/app/:rw --rm soosio/csa:${{ inputs.image_tag }} $args"
 
